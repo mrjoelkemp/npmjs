@@ -31,7 +31,7 @@
     "debug": "0.8.x",
     "extract-github": "0.0.x",
     "licenses": "0.0.x",
-    "mana": "0.1.x",
+    "mana": "git://github.com/mrjoelkemp/mana.git",
     "semver": "2.2.x"
   },
   "devDependencies": {
