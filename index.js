@@ -47,6 +47,7 @@ var Registry = mana.extend({
     options.retries = 'retries' in options ? options.retries : 3;
     options.factor = 'factor' in options ? options.factor : 2;
     options.skipCache = 'skipCache' in options ? options.skipCache : null;
+    options.timeout = 'timeout' in options ? options.timeout : null;
 
     //
     // Make sure that the given registry is a string as we can only connect to
@@ -66,6 +67,7 @@ var Registry = mana.extend({
     this.api = options.registry;
     this.proxy = options.proxy;
     this.cache = options.skipCache ? null : this.cache;
+    this.timeout = options.timeout || this.timeout;
 
     //
     // Pre-compile the basic authorization so we can do updates and deletes
