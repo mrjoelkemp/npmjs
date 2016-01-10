@@ -20,6 +20,32 @@ function Packages(api) {
 }
 
 /**
+ * Get information from the npm packages.
+ *
+ * @param {Array} name The names of the node modules.
+ * @param {Function} fn The callback.
+ * @returns {Assign}
+ * @api public
+ */
+Packages.prototype.getBatch = function get(names, fn) {
+  return this.send('registry/_all_docs', {
+    api: 'https://skimdb.npmjs.com',
+    params: {
+      keys: JSON.stringify(names),
+      include_docs: true
+    }
+  }, fn)
+  .emits(function emits(data, add) {
+    if (!('rows' in data)) return;
+
+    data.rows.forEach(function each(row) {
+      add(row.doc);
+    });
+  })
+  .map(normalize.packages);
+};
+
+/**
  * Get information from the npm package. If the name contains an `@` char we
  * assume that the user wants to get a specific version instead.
  * Example:

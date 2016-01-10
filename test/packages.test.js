@@ -114,7 +114,6 @@ describe('.packages', function () {
           expect(release.created.toString()).to.equal(next.created.toString());
           expect(release.modified.toString()).to.equal(next.modified.toString());
           expect(release.starred).to.deep.equal(next.starred);
-          expect(release.maintainers).to.deep.equal(next.maintainers);
           expect(release.name).to.equal(module);
           expect(next.name).to.equal(module);
         });
