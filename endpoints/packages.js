@@ -39,7 +39,10 @@ Packages.prototype.getBatch = function get(names, fn) {
     if (!('rows' in data)) return;
 
     data.rows.forEach(function each(row) {
-      add(row.doc);
+      // Unpublished projects have a null document
+      if (row.doc) {
+        add(row.doc);
+      }
     });
   })
   .map(normalize.packages);
