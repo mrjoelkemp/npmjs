@@ -46,7 +46,7 @@ var Registry = mana.extend({
     options.githulk = 'githulk' in options ? options.githulk : null;
     options.retries = 'retries' in options ? options.retries : 3;
     options.factor = 'factor' in options ? options.factor : 2;
-    options.cache = 'cache' in options ? options.cache : null;
+    options.skipCache = 'skipCache' in options ? options.skipCache : null;
 
     //
     // Make sure that the given registry is a string as we can only connect to
@@ -65,7 +65,7 @@ var Registry = mana.extend({
     this.factor = options.factor;
     this.api = options.registry;
     this.proxy = options.proxy;
-    this.cache = options.cache;
+    this.cache = options.skipCache ? null : this.cache;
 
     //
     // Pre-compile the basic authorization so we can do updates and deletes

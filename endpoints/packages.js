@@ -29,6 +29,7 @@ function Packages(api) {
  */
 Packages.prototype.getBatch = function get(names, fn) {
   return this.send('registry/_all_docs', {
+    // TODO: Allow for a custom skimdb address (for when we want our own clone)
     api: 'https://skimdb.npmjs.com',
     params: {
       keys: JSON.stringify(names),
